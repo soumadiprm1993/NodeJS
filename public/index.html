@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head><title> Chat Application</title>
+        <link rel="stylesheet" href="./css/style.css">
+        <script src="https://kit.fontawesome.com/090669d635.js" crossorigin="anonymous"></script>
+    </head>
+    <body class="phoneswrapper">
+        <div class="phone" style="background-color: #ffffff;">
+            <div class="background">
+                <div class="shape"></div>
+                <div class="shape"></div>
+            </div>
+            <div class="join-room">
+                <form id="user" class="room-form" action="/chat.html">
+                    <h3> Join Room </h3>
+                    <label class="user-form-label"> Display Name </label>
+                    <i class="fa-solid fa-user fa-lg iconInput"></i>
+                    <input type="text" class="user-input" name="displayname" value="" placeholder="Type Your Name..." required>
+                    <label class="user-form-label"> Room ID </label>
+                    <i class="fa-solid fa-people-roof fa-lg iconInput"></i>
+                    <input type="text" class="user-input" name="roomid" value="" placeholder="Type Room ID..." required>
+                    <button type="submit" class="btn-room-button"> Join </button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head><title> Chat Application</title>
+        <link rel="stylesheet" href="./css/style.css">
+        <script src="https://kit.fontawesome.com/090669d635.js" crossorigin="anonymous"></script>
+    </head>
+    <body class="phoneswrapper">
+        <div class="phone">
+            <div id="room-data" class="room-data"></div>
+            <div class="show-chat" id="show-chat">
+                <div class="phone_head">
+                    <i id="openNavBar" class="fa-solid fa-bars fa-lg" onclick="showUserList()"></i>
+                    <div class="title"></div>
+                    <div class="icon_bubble msg"></div>
+                </div>
+                <div class="divider"></div>
+                <div id="show-msg"></div>
+            </div>
+            <div class="msg-box" id="msg-box">
+                <form id="send-msg-form">
+                    <input type="text" class="ip-msg" name="message" value="" placeholder="type something.." required autocomplete=off>
+                    <span class="btn-group">
+                        <button type="submit" class="send-msg-button"><i class="fa fa-paper-plane"></i></button>
+                        <button id="send-loc" class="send-msg-button"><i class="fa-sharp fa-solid fa-location-dot"></i></button>
+                    </span>
+                </form>
+            </div>
+        </div>
+
+
+        <script id='room-data-template' type="text/html">
+            <h2>Room ID : {{roomid}}</h2>
+            <h3> List of Active Users</h3>
+            <ul>
+                {{#users}}
+                 <li>{{displayname}}</li>
+                {{/users}}
+            </ul>
+        </script>
+
+        <script id='show-msg-template' type="text/html">
+                <span class="chat">
+                    <div class="chat_info">
+                        <div class="contact_name">
+                            {{displayname}}
+                        </div>
+                        <div class="contact_msg">
+                            {{message}}
+                        </div>
+                    </div>
+                    <div class="chat_date"> 
+                        {{createdAt}} 
+                    </div>
+                </span>
+        </script>
+
+        <script id='show-location-template' type="text/html">
+            <span class="chat">
+                <div class="chat_info">
+                    <div class="contact_name">
+                        Soumadip
+                    </div>
+                    <div class="contact_msg">
+                        <a href="{{locMessage}}" target="_blank"> My Current Location </a>
+                    </div>
+                </div>
+                <div class="chat_date"> 
+                    {{createdAt}} 
+                </div>
+            </span>
+        </script>
+
+        <script>
+            function showUserList() {
+                const navBarElement = document.getElementById("openNavBar")
+                if(navBarElement.className.includes("fa-bars")) {
+                    document.getElementById("room-data").style.width = "250px";
+                    document.getElementById("show-chat").style.marginLeft = "250px";
+                    document.getElementById("msg-box").style.marginLeft = "250px";
+                    navBarElement.className = "fa-regular fa-circle-xmark fa-lg"
+                }
+                else {
+                    document.getElementById("room-data").style.width = "0";
+                    document.getElementById("show-chat").style.marginLeft = "0";
+                    document.getElementById("msg-box").style.marginLeft = "0";
+                    navBarElement.className = "fa-solid fa-bars fa-lg"
+                }
+            }
+        </script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.1/mustache.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.11.0/qs.min.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="./js/chatApp.js"></script>
+    </body>
+</html>
